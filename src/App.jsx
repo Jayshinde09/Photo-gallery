@@ -17,6 +17,11 @@ function AppContent() {
     initUser();
   }, []);
 
+  const handleNewUser = () => {
+    localStorage.removeItem('user-storage');
+    window.location.reload();
+  };
+
   if (!userId) {
     return (
       <div className="loading-screen">
@@ -58,6 +63,22 @@ function AppContent() {
               <p className="user-name">{username}</p>
               <p className="user-status">Active now</p>
             </div>
+            <button 
+              onClick={handleNewUser}
+              style={{
+                marginLeft: '12px',
+                padding: '8px 16px',
+                background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontSize: '12px',
+                fontWeight: '600'
+              }}
+            >
+              New User
+            </button>
           </div>
         </div>
       </header>
