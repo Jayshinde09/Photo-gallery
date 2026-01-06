@@ -5,7 +5,7 @@ const fetchImages = async (page = 1) => {
     `https://api.unsplash.com/photos?page=${page}&per_page=24`,
     {
       headers: {
-        Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`
+        Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY || 'UkEtsJpqq4OoOczRm3siktrv2EQH1FFRi5EOWtO9pvg'}`
       }
     }
   );
