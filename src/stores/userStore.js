@@ -10,8 +10,11 @@ export const useUserStore = create(
       username: null,
       color: null,
       initUser: () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const forceNew = urlParams.get('newuser');
+        
         const state = get();
-        if (state.userId) {
+        if (state.userId && !forceNew) {
           console.log('User already initialized:', state);
           return;
         }
@@ -20,6 +23,10 @@ export const useUserStore = create(
         const color = `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`;
         console.log('Initializing user:', { id, name, color });
         set({ userId: id, username: name, color });
+        
+        if (forceNew) {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
       }
     }),
     { name: 'user-storage' }

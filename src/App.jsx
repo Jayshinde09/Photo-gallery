@@ -18,8 +18,7 @@ function AppContent() {
   }, []);
 
   const handleNewUser = () => {
-    localStorage.removeItem('user-storage');
-    window.location.reload();
+    window.open(window.location.origin + '?newuser=1', '_blank');
   };
 
   if (!userId) {
